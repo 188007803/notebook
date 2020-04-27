@@ -12,5 +12,5 @@ features:
   details: 可靠的后端
 - title: 算法
   details: 可敬的算法
-footer: Created by 188007803
+footer: Created by [188007803]
 ---
