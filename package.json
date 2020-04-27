@@ -1,0 +1,29 @@
+{
+  "name": "notebook",
+  "version": "1.0.0",
+  "description": "--- home: true heroImage: /vuepress-blog-logo.png heroText: 我的笔记 tagline: 记录我的学习心得 actionText: 开始 → actionLink: /frontend/ features: - title: 前端   details: 可爱的前端 - title: 后端   details: 可靠的后端 - title: 算法   details: 可敬的算法 footer: Created by 188007803 ---",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "vuepress dev docs",
+    "build": "vuepress build docs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/188007803/notebook.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/188007803/notebook/issues"
+  },
+  "homepage": "https://github.com/188007803/notebook#readme",
+  "devDependencies": {
+    "vuepress": "^1.4.1",
+    "@vuepress/plugin-back-to-top": "^1.4.1"
+  }
+}

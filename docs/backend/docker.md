@@ -1,21 +1,21 @@
-# 01_初识Docker
+# Docker笔记
 
 
-## Docker 是什么
+## 01_Docker 是什么
 - 一次封装，到处执行
 - 基于Linux的高效、敏捷、轻量级容器方案。
 
-## 使用
+### 使用
 ```sh
 # 下载镜像
-git clone ...../docker_ci.git
+git clone ......./docker_ci.git
 
 # 启动镜像（所有的服务都启动了）
 docker-compose up
 
 ```
 
-# 02_Docker安装
+## 02_Docker安装
 
 
 [腾讯云 ubuntu 系统改为 root 登陆](https://cloud.tencent.com/developer/article/1405735)
@@ -95,7 +95,7 @@ docker pull nginx
 ```
 
 
-# 03_简单Nginx服务
+## 03_简单Nginx服务
 
 
 ```sh
@@ -146,7 +146,7 @@ docker rm c99
 
 ```
 
-# 04_Docker运行过程
+## 04_Docker运行过程
 
 - 镜像 (Image)
   面向Docker的只读模板
@@ -157,11 +157,8 @@ docker rm c99
 - 仓库 (Registry)
   存储镜像的服务器
 
-- 流程图
 
-  ![image-20200315230508715](/Users/liushuang/Library/Application Support/typora-user-images/image-20200315230508715.png)
-
-# 05_定制镜像
+## 05_定制镜像
 
 >  镜像的定制实际就是定制每一层所添加的配置、文件。如果我们可以把每一层修改、安装、构建、操作的命令都写入一个脚本，用这个脚本来构建、定制镜像，那么之前提及的无法重复的问题、镜像构建透明性的问题、体积的问题就都会解决。这个脚本就是Dockerfile。
 
@@ -187,9 +184,9 @@ docker rm c99
   ```
 
 
-# 06_定制NodeJS镜像
+## 06_定制NodeJS镜像
 
-## 准备好node和npm
+### 准备好node和npm
 
 ```shell
 # 安装nvm
@@ -214,7 +211,7 @@ npm config set registry https://registry.npmjs.org
 
 
 
-## 开发一个简单koa程序
+### 开发一个简单koa程序
 
 ```shell
 npm init -y
@@ -260,7 +257,7 @@ docker run -p 3000:3000 mynode
 ```
 
 
-# 07_PM2镜像
+## 07_PM2镜像
 
 ```sh
 # 拷贝一下上节课的node镜像
@@ -309,7 +306,7 @@ docker build -t mypm2 .
 docker run -p 3000:3000 -d mypm2
 ```
 
-# 08_Docker-compose
+## 08_Docker-compose
 
 ```sh
 # 安装 docker-compose
@@ -343,7 +340,7 @@ docker-compose up
 compose是官方开源项目，负责docker容器集群的快速编排
 
 ```yaml
-# docker-compose.yml 
+# docker-compose.yml
 # 一次性启动 mongo 和 mongo-express 镜像
 
 version: '3.1'
@@ -358,7 +355,7 @@ services:
     restart: always
     ports:
       - 8000:8081
-      
+
 ```
 
 
@@ -367,7 +364,7 @@ services:
 docker-compose up
 ```
 
-# 09_前后端分离
+## 09_前后端分离
 
 ```sh
 # 免密登录
@@ -396,7 +393,7 @@ Host *
 Host server1
   HostName 148.157.254.111
   User root
-  
+
 Host server2
   HostName 148.157.254.112
   User root
@@ -409,7 +406,7 @@ ssh server1
 # 你需要将公钥转换格式，或重新生成密钥对
 
 # 重新生成
-ssh-keygen -m PEM -t rsa 
+ssh-keygen -m PEM -t rsa
 
 # 转换已有的私钥格式 (推荐，注意先备份)
 ssh-keygen -p -m PEM -f ~/.ssh/id_rsa
@@ -452,7 +449,7 @@ services:
       - 27017:27017
   mongo-express:
     image: mongo-express
-    restart: always 
+    restart: always
     ports:
       - 8081:8081
   nginx:
@@ -468,16 +465,16 @@ services:
 
 
 
-# 10_持续集成
+## 10_持续集成
 
 git重要技能
 
 ```shell
 # git push 强制提交
-git push -f origin master 
+git push -f origin master
 
 # 从远程仓库下载最新版本
-git fetch --all 
+git fetch --all
 # 将本地设为刚获取的最新的内容(强制覆盖)
 git reset --hard origin/master
 
@@ -581,7 +578,6 @@ docker-compose up -d --force-recreate --build
 ```
 
 
-
 ### ubuntu 安装 nginx
 
 ```shell
@@ -600,7 +596,7 @@ $sudo /etc/init.d/nginx restart # 重启
 $sudo /etc/init.d/nginx status # 状态
 
 # 查看端口占用
-lsof -i:80 
+lsof -i:80
 
 # 测试nginx.conf文件
 /usr/sbin/nginx -t -c /etc/nginx/nginx.conf

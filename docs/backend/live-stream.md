@@ -1,5 +1,7 @@
+# 搭建直播服务器
 
-## 《用腾讯云1搭建直播服务》
+
+## 用腾讯云搭建直播服务
 
 1. #### 进入腾讯云控制台，找到云直播
 2. #### 进行域名管理
@@ -62,7 +64,7 @@
          flvPlayer.play();
        }
      </script>
-     
+
      ```
 
    - RTMP播放（见示例文件，基于FLASH）
@@ -85,32 +87,32 @@
          	>
              <!-- RTMP流 -->
              <source src="rtmp拉流地址" type="rtmp/flv" />
-           
+
              <!-- hls流 (如果RTMP不能播放) -->
              <source src="hls拉流地址" type='application/x-mpegURL'>
-           
+
              <!-- 开启js提醒 -->
              <p class="vjs-no-js">
                  播放视频需要启用 JavaScript，推荐使用支持HTML5的浏览器访问。
              </p>
          </video>
-         
+
          <!-- 直播JS -->
          <script src="http://vjs.zencdn.net/5.5.3/video.js"></script>
      </body>
-     
-     ```
-   
-     
-   
 
-## 《用Node搭建直播服务器》
+     ```
+
+
+
+
+## 用Node搭建直播服务
 
 1. 安装Node-Media-Server
 
    ```sh
    npm i node-media-server
-   
+
    # http://www.nodemedia.cn/
    ```
 
@@ -118,7 +120,7 @@
 
    ```javascript
    const NodeMediaServer = require('node-media-server');
-     
+
      const config = {
        rtmp: {
          port: 1935,
@@ -132,13 +134,13 @@
          allow_origin: '*'
        }
      };
-     
+
      var nms = new NodeMediaServer(config)
      nms.run();
-   
+
    ```
 
-   
+
 
 3. OBS推流设置
 
@@ -152,16 +154,16 @@
    ```sh
    # 安装ffmpeg ffplay
    brew install ffmpeg --with-ffplay
-   
+
    # 测试 RTMP
    ffplay rtmp://localhost/live/STREAM_NAME
-   
+
    # 测试 Http-flv
    ffplay http://localhost/live/STREAM_NAME.flv
-   
+
    ```
 
-   
+
 
 5. 使用 flv.js 播放 http-flv 流格式/
 
@@ -185,7 +187,7 @@
 6. 完整鉴权示例
 
     ```javascript
-    
+
     // 常用库
     const dayjs = require('dayjs')
     const md5   = require('md5')
@@ -229,37 +231,37 @@
             ping: 30,
             ping_timeout: 60
         },
-    
+
         // 加密鉴权
         auth: {
             play: true,
             publish: true,
             secret: secret
         },
-    
+
         http: {
             port: 8000,
             allow_origin: '*',
             // 保存目录，注意：windows上不能用 ./，并且路径是双反斜杠 'D:\\xxx\\soft\\ffmpeg.exe'
-            mediaroot: './media', 
+            mediaroot: './media',
         },
-    
+
         // 实时转换成MP4并保存
         trans: {
             ffmpeg: '/usr/local/bin/ffmpeg',
             tasks: [{
-                app: appName, 
+                app: appName,
                 mp4: true,
                 mp4Flags: '[movflags=faststart]',
             }]
         }
     };
-    
+
     var nms = new NodeMediaServer(config)
     nms.run();
     ```
 
-  
+
 
 
 

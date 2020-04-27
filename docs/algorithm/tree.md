@@ -1,5 +1,7 @@
+# 二叉树
 
-### 二叉树遍历
+
+## 二叉树遍历
 
 ```javascript
 
@@ -10,21 +12,15 @@ const tree = [
             {
                 name: '2',
                 children: [
-                    {
-                        name: '4'
-                    },
-                    {
-                        name: '5'
-                    }
+                    { name: '4'},
+                    { name: '5' }
                 ]
             },
             {
                 name: '3',
                 children: [
                     null,
-                    {
-                        name: '6'
-                    }
+                    { name: '6' }
                 ]
             },
 
@@ -39,8 +35,8 @@ const tree = [
  */
 function preWalk(node){
     if (node == null) return;
-  
-    console.log(node.name) // 放在前面为前序，中间为中序，后面为后序 
+
+    console.log(node.name) // 放在前面为前序，中间为中序，后面为后序
     preWalk(node.children && node.children[0])
     preWalk(node.children && node.children[1])
 }
@@ -52,7 +48,7 @@ function stackWalk(root) {
     const stack = [];
 
     let node = root;
-    
+
     // 只要结点存在
     while (node || stack.length > 0) {
 
@@ -77,7 +73,7 @@ function stackWalk(root) {
  * 非递归广度优先遍历
 **/
 function queueWalk(root){
-  
+
     // 根结点放进队列
     const queue = [root]
 
@@ -104,7 +100,7 @@ function queueWalk(root){
 
 
 
-### 二叉树与数组互转
+## 二叉树与数组互转
 
 ```javascript
 
@@ -114,16 +110,16 @@ function queueWalk(root){
 function tree2arr(root) {
     // 数组容器
     const arr = [];
-  
+
     // 放置节点到数组（指定下标）
     function setNode(node, i) {
-      
+
         // 如果节点不为空
         if (node) {
-          
+
             // 放置本节点
             arr[i] = node.name;
-          
+
             // 放置左、右孩子节点
             let left  = node.children && node.children[0] || null;
             let right = node.children && node.children[1] || null;
@@ -131,14 +127,14 @@ function tree2arr(root) {
             setNode( right, 2 * i + 2);
         }
     }
-  
+
     // 从放置根结点开始
     setNode(root, 0);
-  
+
     // 返回数组
     return arr;
 }
-  
+
 /**
  * 数组还原到二叉树
 **/
@@ -146,32 +142,32 @@ function arr2tree(arr) {
 
   	// 获取节点从数组（指定下标）
     function getNode(i){
-      
+
         // 下标越界或指向元素为空，则返回空
         if (i >= arr.length || arr[i] == null) {
             return null;
         }
-      
+
         // 构造本节点
         let node = {
             name: arr[i]
         }
-        
+
         // 获取本结点的左右子节点
         let left  = getNode( 2 * i + 1)
         let right = getNode( 2 * i + 2)
-        
+
         // 将子节点加到本节点上
         if (left || right) {
             node.children = [];
             node.children[0] = left;
             node.children[1] = right;
         }
-      
+
         // 返回本节点
         return node;
     }
-  
+
     // 返回顶节点
     return getNode(0)
 }
@@ -181,7 +177,7 @@ function arr2tree(arr) {
 
 
 
-### 堆的调整
+## 二叉堆的调整算法
 
 ```javascript
 
@@ -190,27 +186,27 @@ function arr2tree(arr) {
  * 描述：从尾部开始，自动与父节点比大小，逐渐上浮到合适位置。
  */
 function upAdjust (arr) {
-  
+
     // 获取子下标，及其父下标
     let childIndex = arr.length - 1;
     let parentIndex = Math.floor((childIndex - 1) / 2);
-    
+
     // 获取子值
     let child = arr[childIndex];
 
     // 逐步向上比较，一旦比父值小
     while ( childIndex > 0 && child < arr[parentIndex] ) {
-      
+
         // 子值改为父值
         arr[childIndex] = arr[parentIndex];
-      
+
         // 子下标上移一层
         childIndex = parentIndex;
-      
+
         // 父下标上移一层
         parentIndex = Math.floor((parentIndex - 1) / 2);
     }
-  
+
     // 落地子值
     arr[childIndex] = child;
     return arr;
