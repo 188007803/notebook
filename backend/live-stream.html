@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>搭建直播服务器</title>
+    <meta name="generator" content="VuePress 1.4.1">
+    
+    <meta name="description" content="">
+    <link rel="preload" href="/notebook/assets/css/0.styles.bd9cedbc.css" as="style"><link rel="preload" href="/notebook/assets/js/app.a01c09ad.js" as="script"><link rel="preload" href="/notebook/assets/js/2.24314c1a.js" as="script"><link rel="preload" href="/notebook/assets/js/11.dc38838d.js" as="script"><link rel="prefetch" href="/notebook/assets/js/10.259096ef.js"><link rel="prefetch" href="/notebook/assets/js/12.3609fdc6.js"><link rel="prefetch" href="/notebook/assets/js/13.25e76eb0.js"><link rel="prefetch" href="/notebook/assets/js/14.54fb2b14.js"><link rel="prefetch" href="/notebook/assets/js/15.9a67e689.js"><link rel="prefetch" href="/notebook/assets/js/3.54aa8c37.js"><link rel="prefetch" href="/notebook/assets/js/4.79d4e6d0.js"><link rel="prefetch" href="/notebook/assets/js/5.292fbaf8.js"><link rel="prefetch" href="/notebook/assets/js/6.0e4e73bf.js"><link rel="prefetch" href="/notebook/assets/js/7.8292a2f5.js"><link rel="prefetch" href="/notebook/assets/js/8.435a3820.js"><link rel="prefetch" href="/notebook/assets/js/9.7b95941b.js">
+    <link rel="stylesheet" href="/notebook/assets/css/0.styles.bd9cedbc.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/notebook/" class="home-link router-link-active"><img src="vuepress-blog-logo.png" alt="" class="logo"> <!----></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="前端" class="dropdown-title"><span class="title">前端</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/notebook/frontend/vue-element-admin.html" class="nav-link">
+  VueElementAdmin调整
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="后端" class="dropdown-title"><span class="title">后端</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/notebook/backend/live-stream.html" class="nav-link router-link-exact-active router-link-active">
+  直播服务搭建笔记
+</a></li><li class="dropdown-item"><!----> <a href="/notebook/backend/rabbit-mq.html" class="nav-link">
+  RabbitMQ消息队列
+</a></li><li class="dropdown-item"><!----> <a href="/notebook/backend/docker.html" class="nav-link">
+  Docker笔记
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="算法" class="dropdown-title"><span class="title">算法</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/notebook/algorithm/common.html" class="nav-link">
+  常用算法
+</a></li><li class="dropdown-item"><!----> <a href="/notebook/algorithm/tree.html" class="nav-link">
+  二叉树相关
+</a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="前端" class="dropdown-title"><span class="title">前端</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/notebook/frontend/vue-element-admin.html" class="nav-link">
+  VueElementAdmin调整
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="后端" class="dropdown-title"><span class="title">后端</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/notebook/backend/live-stream.html" class="nav-link router-link-exact-active router-link-active">
+  直播服务搭建笔记
+</a></li><li class="dropdown-item"><!----> <a href="/notebook/backend/rabbit-mq.html" class="nav-link">
+  RabbitMQ消息队列
+</a></li><li class="dropdown-item"><!----> <a href="/notebook/backend/docker.html" class="nav-link">
+  Docker笔记
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="算法" class="dropdown-title"><span class="title">算法</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/notebook/algorithm/common.html" class="nav-link">
+  常用算法
+</a></li><li class="dropdown-item"><!----> <a href="/notebook/algorithm/tree.html" class="nav-link">
+  二叉树相关
+</a></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>前端</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>后端</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/notebook/backend/live-stream.html" class="active sidebar-link">搭建直播服务器</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/notebook/backend/live-stream.html#用腾讯云搭建直播服务" class="sidebar-link">用腾讯云搭建直播服务</a></li><li class="sidebar-sub-header"><a href="/notebook/backend/live-stream.html#用node搭建直播服务" class="sidebar-link">用Node搭建直播服务</a></li></ul></li><li><a href="/notebook/backend/rabbit-mq.html" class="sidebar-link">RabbitMQ</a></li><li><a href="/notebook/backend/docker.html" class="sidebar-link">Docker笔记</a></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>算法</span> <span class="arrow right"></span></p> <!----></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="搭建直播服务器"><a href="#搭建直播服务器" class="header-anchor">#</a> 搭建直播服务器</h1> <h2 id="用腾讯云搭建直播服务"><a href="#用腾讯云搭建直播服务" class="header-anchor">#</a> 用腾讯云搭建直播服务</h2> <ol><li><h4 id="进入腾讯云控制台，找到云直播"><a href="#进入腾讯云控制台，找到云直播" class="header-anchor">#</a> 进入腾讯云控制台，找到云直播</h4></li> <li><h4 id="进行域名管理"><a href="#进行域名管理" class="header-anchor">#</a> 进行域名管理</h4> <ul><li>添加推流域名（可以随便写）CNAME指向： [你的域名].livepush.myqloud.com</li> <li>添加播放域名（必须备案），CNAME指向： [你的域名].livecdn.liveplay.myqloud.com</li></ul></li> <li><h4 id="生成推拉流地址（辅助工具-地址生成器"><a href="#生成推拉流地址（辅助工具-地址生成器" class="header-anchor">#</a> 生成推拉流地址（辅助工具——&gt;地址生成器)</h4> <ul><li><p>生成推流地址：（选择推流域名，输入StreamName，过期时间，点击生成地址, 生成）</p> <table><thead><tr><th>类型</th> <th>推流域名</th></tr></thead> <tbody><tr><td>过期时间</td> <td>2020-03-21</td></tr> <tr><td>推流地址</td> <td>OBS推流地址 + OBS推流名称</td></tr> <tr><td>OBS推流地址</td> <td>rtmp://84752.livepush.myqcloud.com/live/</td></tr> <tr><td>OBS推流名称</td> <td>itying?txSecret=xxxxx&amp;txTime=xxxx</td></tr></tbody></table></li> <li><p>生成播放地址：（选择播放域名，输入StreamName，过期时间，点击生成地址）</p> <table><thead><tr><th>[类型]</th> <th>[播放域名]</th></tr></thead> <tbody><tr><td>过期时间</td> <td>2020-03-21</td></tr> <tr><td>播放地址（RTMP）</td> <td>rtmp://xxx</td></tr> <tr><td>播放地址（FLV）</td> <td>http://xxx (最常用)</td></tr> <tr><td>播放地址（HLS）</td> <td>http://xxx</td></tr></tbody></table></li></ul></li> <li><h4 id="用obs进行直播（也可以用rtmp推流摄像机）"><a href="#用obs进行直播（也可以用rtmp推流摄像机）" class="header-anchor">#</a> 用OBS进行直播（也可以用RTMP推流摄像机）</h4> <ol><li>下载OBS （https://obsproject.com/zh-cn）</li> <li>设置OBS
+<ol><li>新建场景</li> <li>新建来源（视频捕获设备，新建摄像头，选择实际设备）</li> <li>设置推流地址（点设置，推流）</li> <li>服务器：（填写之前生成的OBS推流地址：rtmp://xxxx）</li> <li>流密钥：（填写之前生成的OBS推流名称：itying?text.....）</li></ol></li> <li>开始推流（如果下面有推流的进度显示，即成功）</li></ol></li> <li><h4 id="拉流测试"><a href="#拉流测试" class="header-anchor">#</a> 拉流测试</h4> <ol><li>进入腾讯云控制台，进入流管理，点击在线流，点测试，启动Flash，能看到就成功了。</li> <li>如果有配置了播放域名和生成播放地址，可以进入VCL等网络播放器，打开网络串流（RTMP，FLV）</li></ol></li> <li><h4 id="网页播放"><a href="#网页播放" class="header-anchor">#</a> 网页播放</h4> <ul><li><p>FLV播放（不基于FLASH，可以用于手机端)</p> <div class="language-html extra-class"><pre class="language-html"><code><span class="token comment">&lt;!--FLV--&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>https://cdn.bootcss.com/flv.js/1.4.0/flv.min.js<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span><span class="token script"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>video</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>videoElement<span class="token punctuation">&quot;</span></span> <span class="token attr-name">controls</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>controls<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>video</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>flvjs<span class="token punctuation">.</span><span class="token function">isSupported</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> videoElement <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'videoElement'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">var</span> flvPlayer <span class="token operator">=</span> flvjs<span class="token punctuation">.</span><span class="token function">createPlayer</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+      type<span class="token operator">:</span> <span class="token string">'flv'</span><span class="token punctuation">,</span>
+      url<span class="token operator">:</span><span class="token string">'flv拉流地址'</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    flvPlayer<span class="token punctuation">.</span><span class="token function">attachMediaElement</span><span class="token punctuation">(</span>videoElement<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    flvPlayer<span class="token punctuation">.</span><span class="token function">load</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    flvPlayer<span class="token punctuation">.</span><span class="token function">play</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+
+</code></pre></div></li> <li><p>RTMP播放（见示例文件，基于FLASH）</p> <div class="language-html extra-class"><pre class="language-html"><code><span class="token comment">&lt;!--RTMP--&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>http://vjs.zencdn.net/5.5.3/video-js.css<span class="token punctuation">&quot;</span></span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>stylesheet<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token comment">&lt;!-- If you'd like to support IE8 --&gt;</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>http://vjs.zencdn.net/ie8/1.1.1/videojs-ie8.min.js<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span><span class="token script"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>video</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>my-video<span class="token punctuation">&quot;</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>video-js<span class="token punctuation">&quot;</span></span>
+    	<span class="token attr-name">controls</span>
+    	<span class="token attr-name">preload</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>auto<span class="token punctuation">&quot;</span></span>
+    	<span class="token attr-name">width</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>640<span class="token punctuation">&quot;</span></span>
+    	<span class="token attr-name">height</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>300<span class="token punctuation">&quot;</span></span>
+    	<span class="token attr-name">poster</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>http://xxx.jpg<span class="token punctuation">&quot;</span></span>
+    	<span class="token attr-name">data-setup</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>{}<span class="token punctuation">&quot;</span></span>
+    	<span class="token punctuation">&gt;</span></span>
+        <span class="token comment">&lt;!-- RTMP流 --&gt;</span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>source</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>rtmp拉流地址<span class="token punctuation">&quot;</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>rtmp/flv<span class="token punctuation">&quot;</span></span> <span class="token punctuation">/&gt;</span></span>
+
+        <span class="token comment">&lt;!-- hls流 (如果RTMP不能播放) --&gt;</span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>source</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>hls拉流地址<span class="token punctuation">&quot;</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">'</span>application/x-mpegURL<span class="token punctuation">'</span></span><span class="token punctuation">&gt;</span></span>
+
+        <span class="token comment">&lt;!-- 开启js提醒 --&gt;</span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>vjs-no-js<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+            播放视频需要启用 JavaScript，推荐使用支持HTML5的浏览器访问。
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>video</span><span class="token punctuation">&gt;</span></span>
+
+    <span class="token comment">&lt;!-- 直播JS --&gt;</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>http://vjs.zencdn.net/5.5.3/video.js<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span><span class="token script"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">&gt;</span></span>
+
+</code></pre></div></li></ul></li></ol> <h2 id="用node搭建直播服务"><a href="#用node搭建直播服务" class="header-anchor">#</a> 用Node搭建直播服务</h2> <ol><li><p>安装Node-Media-Server</p> <div class="language-sh extra-class"><pre class="language-sh"><code><span class="token function">npm</span> i node-media-server
+
+<span class="token comment"># http://www.nodemedia.cn/</span>
+</code></pre></div></li> <li><p>启动服务 app.js</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token keyword">const</span> NodeMediaServer <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'node-media-server'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">const</span> config <span class="token operator">=</span> <span class="token punctuation">{</span>
+    rtmp<span class="token operator">:</span> <span class="token punctuation">{</span>
+      port<span class="token operator">:</span> <span class="token number">1935</span><span class="token punctuation">,</span>
+      chunk_size<span class="token operator">:</span> <span class="token number">60000</span><span class="token punctuation">,</span>
+      gop_cache<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+      ping<span class="token operator">:</span> <span class="token number">30</span><span class="token punctuation">,</span>
+      ping_timeout<span class="token operator">:</span> <span class="token number">60</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    http<span class="token operator">:</span> <span class="token punctuation">{</span>
+      port<span class="token operator">:</span> <span class="token number">8000</span><span class="token punctuation">,</span>
+      allow_origin<span class="token operator">:</span> <span class="token string">'*'</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">var</span> nms <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">NodeMediaServer</span><span class="token punctuation">(</span>config<span class="token punctuation">)</span>
+  nms<span class="token punctuation">.</span><span class="token function">run</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+</code></pre></div></li> <li><p>OBS推流设置</p> <div class="language-sh extra-class"><pre class="language-sh"><code><span class="token comment">#  URL:   rtmp://localhost/live</span>
+<span class="token comment">#  stream key: STREAM_NAME(随意)</span>
+</code></pre></div></li> <li><p>拉流测试</p> <div class="language-sh extra-class"><pre class="language-sh"><code><span class="token comment"># 安装ffmpeg ffplay</span>
+brew <span class="token function">install</span> ffmpeg --with-ffplay
+
+<span class="token comment"># 测试 RTMP</span>
+ffplay rtmp://localhost/live/STREAM_NAME
+
+<span class="token comment"># 测试 Http-flv</span>
+ffplay http://localhost/live/STREAM_NAME.flv
+
+</code></pre></div></li> <li><p>使用 flv.js 播放 http-flv 流格式/</p> <div class="language-html extra-class"><pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>https://cdn.bootcss.com/flv.js/1.5.0/flv.min.js<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span><span class="token script"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>video</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>videoElement<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>video</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>flvjs<span class="token punctuation">.</span><span class="token function">isSupported</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> videoElement <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'videoElement'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">var</span> flvPlayer <span class="token operator">=</span> flvjs<span class="token punctuation">.</span><span class="token function">createPlayer</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+      type<span class="token operator">:</span> <span class="token string">'flv'</span><span class="token punctuation">,</span>
+      url<span class="token operator">:</span> <span class="token string">'ws://localhost:8000/live/STREAM_NAME.flv'</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    flvPlayer<span class="token punctuation">.</span><span class="token function">attachMediaElement</span><span class="token punctuation">(</span>videoElement<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    flvPlayer<span class="token punctuation">.</span><span class="token function">load</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    flvPlayer<span class="token punctuation">.</span><span class="token function">play</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div></li> <li><p>完整鉴权示例</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code>
+<span class="token comment">// 常用库</span>
+<span class="token keyword">const</span> dayjs <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'dayjs'</span><span class="token punctuation">)</span>
+<span class="token keyword">const</span> md5   <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'md5'</span><span class="token punctuation">)</span>
+<span class="token keyword">const</span> ip    <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'ip'</span><span class="token punctuation">)</span>
+
+<span class="token comment">// 配置鉴权参数</span>
+<span class="token keyword">const</span> appName    <span class="token operator">=</span> <span class="token string">'live'</span>         <span class="token comment">// 固定</span>
+<span class="token keyword">const</span> streamName <span class="token operator">=</span> <span class="token string">'stream'</span>       <span class="token comment">// 流名字，自己改</span>
+<span class="token keyword">const</span> expires    <span class="token operator">=</span> <span class="token function">dayjs</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token string">'hour'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">unix</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 过期时间，自己改，</span>
+<span class="token keyword">const</span> secret     <span class="token operator">=</span> <span class="token string">'nodemedia2020privatekey'</span> <span class="token comment">// 密钥，自己改，推荐放在配置文件中</span>
+
+<span class="token comment">// 生成鉴权要素</span>
+<span class="token keyword">const</span> stream     <span class="token operator">=</span> <span class="token function">md5</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">/</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>appName<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">/</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>streamName<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">-</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>expires<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">-</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>secret<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span>
+<span class="token keyword">const</span> sign       <span class="token operator">=</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>expires<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">-</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>stream<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span>
+<span class="token keyword">const</span> ipAddress  <span class="token operator">=</span> ip<span class="token punctuation">.</span><span class="token function">address</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> portPlay   <span class="token operator">=</span> <span class="token number">8000</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 生成最终地址</span>
+<span class="token keyword">const</span> hostPublish <span class="token operator">=</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>ipAddress<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span>
+<span class="token keyword">const</span> hostPlay    <span class="token operator">=</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>ipAddress<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">:</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>portPlay<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span>
+
+<span class="token keyword">const</span> urlPublish <span class="token operator">=</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">rtmp://</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>hostPublish<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">/</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>appName<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">/</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>streamName<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">?sign=</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>sign<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> urlRtmp    <span class="token operator">=</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">rtmp://</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>hostPlay<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">/</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>appName<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">/</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>streamName<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">?sign=</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>sign<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> urlFlv     <span class="token operator">=</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">http://</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>hostPlay<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">/</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>appName<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">/</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>streamName<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">.flv?sign=</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>sign<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> urlWs      <span class="token operator">=</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">ws://</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>hostPlay<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">/</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>appName<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">/</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>streamName<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">.flv?sign=</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>sign<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> table <span class="token operator">=</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">{</span>name<span class="token operator">:</span> <span class="token string">'urlPublish'</span><span class="token punctuation">,</span> url<span class="token operator">:</span> urlPublish<span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>name<span class="token operator">:</span> <span class="token string">'urlRtmp'</span><span class="token punctuation">,</span>    url<span class="token operator">:</span> urlRtmp<span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>name<span class="token operator">:</span> <span class="token string">'urlFlv'</span><span class="token punctuation">,</span>     url<span class="token operator">:</span> urlFlv<span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>name<span class="token operator">:</span> <span class="token string">'urlWs'</span><span class="token punctuation">,</span>      url<span class="token operator">:</span> urlWs<span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">]</span>
+
+console<span class="token punctuation">.</span><span class="token function">table</span><span class="token punctuation">(</span>table<span class="token punctuation">)</span>
+
+<span class="token keyword">const</span> config <span class="token operator">=</span> <span class="token punctuation">{</span>
+    rtmp<span class="token operator">:</span> <span class="token punctuation">{</span>
+        port<span class="token operator">:</span> <span class="token number">1935</span><span class="token punctuation">,</span>
+        chunk_size<span class="token operator">:</span> <span class="token number">60000</span><span class="token punctuation">,</span>
+        gop_cache<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+        ping<span class="token operator">:</span> <span class="token number">30</span><span class="token punctuation">,</span>
+        ping_timeout<span class="token operator">:</span> <span class="token number">60</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+
+    <span class="token comment">// 加密鉴权</span>
+    auth<span class="token operator">:</span> <span class="token punctuation">{</span>
+        play<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+        publish<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+        secret<span class="token operator">:</span> secret
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+
+    http<span class="token operator">:</span> <span class="token punctuation">{</span>
+        port<span class="token operator">:</span> <span class="token number">8000</span><span class="token punctuation">,</span>
+        allow_origin<span class="token operator">:</span> <span class="token string">'*'</span><span class="token punctuation">,</span>
+        <span class="token comment">// 保存目录，注意：windows上不能用 ./，并且路径是双反斜杠 'D:\\xxx\\soft\\ffmpeg.exe'</span>
+        mediaroot<span class="token operator">:</span> <span class="token string">'./media'</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+
+    <span class="token comment">// 实时转换成MP4并保存</span>
+    trans<span class="token operator">:</span> <span class="token punctuation">{</span>
+        ffmpeg<span class="token operator">:</span> <span class="token string">'/usr/local/bin/ffmpeg'</span><span class="token punctuation">,</span>
+        tasks<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span>
+            app<span class="token operator">:</span> appName<span class="token punctuation">,</span>
+            mp4<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+            mp4Flags<span class="token operator">:</span> <span class="token string">'[movflags=faststart]'</span><span class="token punctuation">,</span>
+        <span class="token punctuation">}</span><span class="token punctuation">]</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">var</span> nms <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">NodeMediaServer</span><span class="token punctuation">(</span>config<span class="token punctuation">)</span>
+nms<span class="token punctuation">.</span><span class="token function">run</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div></li></ol></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">更新时间:</span> <span class="time">4/27/2020, 10:21:41 AM</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/notebook/frontend/vue-element-admin.html" class="prev">
+        VueElementAdmin 修改
+      </a></span> <span class="next"><a href="/notebook/backend/rabbit-mq.html">
+        RabbitMQ
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/notebook/assets/js/app.a01c09ad.js" defer></script><script src="/notebook/assets/js/2.24314c1a.js" defer></script><script src="/notebook/assets/js/11.dc38838d.js" defer></script>
+  </body>
+</html>
