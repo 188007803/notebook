@@ -1,10 +1,10 @@
 
 module.exports = {
 
-    base: '',
+    base: '/notebook/',
 
     themeConfig: {
-        logo: '/vuepress-blog-logo.png',
+        logo: 'vuepress-blog-logo.png',
         lastUpdated: '更新时间',
         smoothScroll: true,
         plugins: [
