@@ -63,6 +63,12 @@ module.exports = {
                 ]
             },
             {
+                title: '设计模式',
+                children: [
+                    '/pattern/common',
+                ]
+            },
+            {
                 title: '英语',
                 children: [
                     '/english/grammer/超能英语',
