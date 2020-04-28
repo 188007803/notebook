@@ -4,6 +4,9 @@ module.exports = {
     base: '/notebook/',
 
     themeConfig: {
+        repo: 'https://github.com/188007803/notebook',
+        // repoLabel: 'GitHub',
+
         logo: 'vuepress-blog-logo.png',
         lastUpdated: '更新时间',
         smoothScroll: true,
@@ -57,6 +60,13 @@ module.exports = {
                 children: [
                     '/algorithm/common',
                     '/algorithm/tree',
+                ]
+            },
+            {
+                title: '英语',
+                children: [
+                    '/english/grammer/超能英语',
+                    '/english/grammer/极简英语',
                 ]
             }
         ]
