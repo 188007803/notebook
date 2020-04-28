@@ -40,7 +40,8 @@ module.exports = {
             {
                 title: '前端',
                 children: [
-                    '/frontend/vue-element-admin'
+                    '/frontend/vue-element-admin',
+                    '/frontend/npm'
                 ]
             },
             {

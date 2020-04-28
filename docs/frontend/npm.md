@@ -32,9 +32,9 @@ npm outdated #检查依赖的最新版本
 ## 注册和登录
 
 ```sh
-# 先把源设为官方源
-# 可靠先安装nrm，方便进行源切换
-npm i -g nrm 
+# 先安装nrm，方便进行源切换
+# 把源设为官方源
+npm i -g nrm
 nrm ls
 nrm use npm
 
