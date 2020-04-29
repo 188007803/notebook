@@ -2,6 +2,12 @@
 module.exports = {
 
     base: '/notebook/',
+    plugins: {
+        run: {
+          jsLabs: ['https://unpkg.com/element-ui/lib/index.js'],
+          cssLabs: ['https://unpkg.com/element-ui/lib/theme-chalk/index.css'],
+        }
+    },
 
     themeConfig: {
         repo: 'https://github.com/188007803/notebook',
@@ -11,7 +17,7 @@ module.exports = {
         lastUpdated: '更新时间',
         smoothScroll: true,
         plugins: [
-            '@vuepress/back-to-top'
+            '@vuepress/back-to-top',
         ],
         nav: [
             {
@@ -66,6 +72,13 @@ module.exports = {
                 title: '设计模式',
                 children: [
                     '/pattern/common',
+                ]
+            },
+            {
+                title: '自己造轮子',
+                children: [
+                    '/wheels/koa',
+                    '/wheels/vue',
                 ]
             },
             {
