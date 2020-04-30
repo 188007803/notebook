@@ -5,6 +5,8 @@
 
 > 参考源代码，抽取核心进行简化
 
+[koa](./koa.js)
+
 ```js
 
 // 3个必需对象
@@ -144,11 +146,6 @@ class Koa extends EventEmitter {
         const onerror = err => ctx.onerror(err)
         const handleResponse = () => this.respond(ctx)
         fnMiddleware(ctx).then(handleResponse).catch(onerror)
-    }
-
-    // 生成响应
-    response(ctx){
-        ctx.res.end(ctx.body)
     }
 
     // 初始化上下文对象

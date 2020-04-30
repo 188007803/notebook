@@ -137,11 +137,6 @@ class Koa extends EventEmitter {
         fnMiddleware(ctx).then(handleResponse).catch(onerror)
     }
 
-    // 生成响应
-    response(ctx){
-        ctx.res.end(ctx.body)
-    }
-
     // 初始化上下文对象
     createContext(req, res){
         const context = Object.create(this.context);
