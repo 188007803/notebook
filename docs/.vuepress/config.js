@@ -66,6 +66,7 @@ module.exports = {
                 children: [
                     '/algorithm/common',
                     '/algorithm/tree',
+                    '/algorithm/heap',
                 ]
             },
             {
